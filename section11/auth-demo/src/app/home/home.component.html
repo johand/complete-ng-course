@@ -4,7 +4,15 @@
   Welcome [NAME]
 </p>
 <ul>
-  <li><a routerLink="/admin">Admin</a></li>
-  <li><a routerLink="/login">Login</a></li>
-  <li (click)="authService.logout()" ><a>Logout</a></li>
+  <li *ngIf="authService.isLoggedIn()">
+    <a routerLink="/admin">Admin</a>
+  </li>
+
+  <li *ngIf="!authService.isLoggedIn()">
+    <a routerLink="/login">Login</a>
+  </li>
+  
+  <li *ngIf="authService.isLoggedIn()" (click)="authService.logout()">
+    <a>Logout</a>
+  </li>
 </ul>
