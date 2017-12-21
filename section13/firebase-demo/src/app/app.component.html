@@ -1,6 +1,10 @@
-<button (click)="ngOnDestroy()">Go Offline</button>
+<ul *ngIf="author$ | async as author">
+  <li>{{ author.name }}</li>
+  <li>{{ author.students }}</li>
+  <li>{{ author.isPremium }}</li>
+</ul>
 
-<ul>
+<!-- <ul>
   <li *ngFor="let course of courses$ | async">
     {{ course }}
   </li>
@@ -12,4 +16,4 @@
 
 <p>
   {{ author$ | async | json }}
-</p>
+</p> -->
