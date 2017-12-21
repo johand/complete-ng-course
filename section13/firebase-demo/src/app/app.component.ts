@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AngularFireDatabase } from 'angularfire2/database';
+import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 import { Subscription } from 'rxjs/Subscription';
 
 @Component({
@@ -9,13 +9,31 @@ import { Subscription } from 'rxjs/Subscription';
 })
 export class AppComponent {
   courses$;
+  coursesList: AngularFireList<any>;
+
   course$;
   author$;
 
   constructor(db: AngularFireDatabase) {
-    this.courses$ = db.list('/courses').valueChanges();
+    this.coursesList = db.list('/courses');
+    this.courses$ = this.coursesList.valueChanges();
+
     this.course$ = db.object('/courses/1').valueChanges();
     this.author$ = db.object('/authors/1').valueChanges();
+  }
+
+  add(course: HTMLInputElement) {
+    this.coursesList.push({
+      name: course.value,
+      price: 150,
+      isLive: true,
+      sections: [
+        { title: 'Components' },
+        { title: 'Directives' },
+        { title: 'Templates' }
+      ]
+    });
+    course.value = '';
   }
 
 }
