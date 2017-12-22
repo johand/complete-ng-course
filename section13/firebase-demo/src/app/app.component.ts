@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
-import { Subscription } from 'rxjs/Subscription';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/map';
 
 @Component({
   selector: 'app-root',
@@ -8,16 +9,24 @@ import { Subscription } from 'rxjs/Subscription';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  courses$;
+  courses$: Observable<any[]>;
   coursesList: AngularFireList<any>;
 
   course$;
   author$;
 
-  constructor(db: AngularFireDatabase) {
+  constructor(private db: AngularFireDatabase) {
     this.coursesList = db.list('/courses');
-    this.courses$ = this.coursesList.valueChanges();
+    this.courses$ = this.coursesList.snapshotChanges()
+      .map(changes => {
+        console.log(changes);
+        return changes.map(c => ({
+          key: c.payload.key, ...c.payload.val(),
+          val: c.payload.val()
+        }));
+      });
 
+    // this.courses$ = this.coursesList.valueChanges();
     this.course$ = db.object('/courses/1').valueChanges();
     this.author$ = db.object('/authors/1').valueChanges();
   }
@@ -34,6 +43,14 @@ export class AppComponent {
       ]
     });
     course.value = '';
+  }
+
+  update(course) {
+    this.db.object('/courses/' + course.key)
+      .set({
+        title: 'New Title',
+        isLive: true
+      });
   }
 
 }
