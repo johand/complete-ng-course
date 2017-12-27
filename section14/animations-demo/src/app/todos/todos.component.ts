@@ -1,19 +1,12 @@
 import { Component } from '@angular/core';
-import { trigger, transition, style, animate, state } from '@angular/animations';
+import { fade } from 'app/animations';
 
 @Component({
   selector: 'todos',
   templateUrl: './todos.component.html',
   styleUrls: ['./todos.component.css'],
   animations: [
-    trigger('fade', [
-      state('void', style({ opacity: 0 })),
-      // bidirectional state change expressions
-      // transition('void <=> *', [
-      transition(':enter, :leave', [
-        animate(2000)
-      ])
-    ])
+    fade
   ]
 })
 export class TodosComponent {
