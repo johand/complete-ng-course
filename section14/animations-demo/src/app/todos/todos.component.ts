@@ -8,11 +8,9 @@ import { trigger, transition, style, animate, state } from '@angular/animations'
   animations: [
     trigger('fade', [
       state('void', style({ opacity: 0 })),
-      transition('void => *', [
-        animate(2000)
-      ]),
-
-      transition('* => void', [
+      // bidirectional state change expressions
+      // transition('void <=> *', [
+      transition(':enter, :leave', [
         animate(2000)
       ])
     ])
