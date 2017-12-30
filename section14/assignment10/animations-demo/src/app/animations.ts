@@ -2,7 +2,7 @@ import { trigger, transition, style, animate, state } from '@angular/animations'
 
 export let slide = trigger('slide', [
     transition(':enter', [
-        style({ transform: 'translateX(-30px)' }),
+        style({ transform: 'translateX(-10px)' }),
         animate(500)
     ]),
 
