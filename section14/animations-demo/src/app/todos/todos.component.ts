@@ -1,4 +1,4 @@
-import { trigger, transition, style, animate, state, keyframes, useAnimation } from '@angular/animations';
+import { trigger, transition, style, animate, state, keyframes, useAnimation, query } from '@angular/animations';
 import { Component } from '@angular/core';
 import { fade, slide, bounceOutLeftAnimation, fadeInAnimation, fadeOutAnimation } from 'app/animations';
 
@@ -7,6 +7,15 @@ import { fade, slide, bounceOutLeftAnimation, fadeInAnimation, fadeOutAnimation 
   templateUrl: './todos.component.html',
   styleUrls: ['./todos.component.css'],
   animations: [
+    trigger('todosAnimation', [
+      transition(':enter', [
+        query('h1', [
+          style({ transform: 'translateY(-20px)' }),
+          animate(1000)
+        ])
+      ])
+    ]),
+
     trigger('todoAnimation', [
       transition(':enter', [
         useAnimation(fadeInAnimation, {
