@@ -13,7 +13,7 @@ import { Component, Input } from '@angular/core';
         height: 0,
         paddingTop: 0,
         paddingBottom: 0,
-        overflow: 'hidden'
+        opacity: 0
       })),
 
       // state('expanded', style({
@@ -23,7 +23,13 @@ import { Component, Input } from '@angular/core';
       // })),
 
       transition('collapsed => expanded', [
-        animate('300ms ease-out')
+        animate('300ms ease-out', style({
+          height: '*',
+          paddingTop: '*',
+          paddingBottom: '*'
+        })),
+
+        animate('1s', style({ opacity: 1 }))
       ]),
 
       transition('expanded => collapsed', [
