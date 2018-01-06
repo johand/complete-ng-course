@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { MatCheckboxModule, MatRadioModule, MatSelectModule } from '@angular/material';
+import { MatCheckboxModule, MatRadioModule, MatSelectModule, MatInputModule } from '@angular/material';
 import { NgModule } from '@angular/core';
 
 
@@ -19,6 +19,7 @@ import { FormsModule } from '@angular/forms';
     MatCheckboxModule,
     MatRadioModule,
     MatSelectModule,
+    MatInputModule,
     FormsModule
   ],
   providers: [],
