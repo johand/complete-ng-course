@@ -3,7 +3,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import {
   MatCheckboxModule, MatRadioModule, MatSelectModule, MatInputModule,
-  MatDatepickerModule, MatNativeDateModule, MatIconModule, MatButtonModule
+  MatDatepickerModule, MatNativeDateModule, MatIconModule, MatButtonModule,
+  MatChipsModule
 } from '@angular/material';
 import { NgModule } from '@angular/core';
 
@@ -26,6 +27,7 @@ import { FormsModule } from '@angular/forms';
     MatNativeDateModule,
     MatIconModule,
     MatButtonModule,
+    MatChipsModule,
     FormsModule
   ],
   providers: [],

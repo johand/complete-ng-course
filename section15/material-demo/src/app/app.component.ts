@@ -21,6 +21,20 @@ export class AppComponent {
 
   // color = 2;
 
-  minDate = new Date(2017, 12, 1);
-  maxDate = new Date(2018, 1, 6);
+  // minDate = new Date(2017, 12, 1);
+  // maxDate = new Date(2018, 1, 6);
+
+  categories = [
+    { name: 'Begginer' },
+    { name: 'Intermediate' },
+    { name: 'Advanced' },
+  ];
+
+  selectCategory(category) {
+    this.categories
+      .filter(c => c !== category)
+      .forEach(c => c['selected'] = false);
+
+    category.selected = !category.selected;
+  }
 }
