@@ -4,7 +4,7 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import {
   MatCheckboxModule, MatRadioModule, MatSelectModule, MatInputModule,
   MatDatepickerModule, MatNativeDateModule, MatIconModule, MatButtonModule,
-  MatChipsModule, MatProgressSpinnerModule, MatTooltipModule
+  MatChipsModule, MatProgressSpinnerModule, MatTooltipModule, MatTabsModule
 } from '@angular/material';
 import { NgModule } from '@angular/core';
 
@@ -30,6 +30,7 @@ import { FormsModule } from '@angular/forms';
     MatChipsModule,
     MatProgressSpinnerModule,
     MatTooltipModule,
+    MatTabsModule,
     FormsModule
   ],
   providers: [],
