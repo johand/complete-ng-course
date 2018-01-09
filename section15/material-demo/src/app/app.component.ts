@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 // import { clearInterval } from 'timers';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/timer';
+import { MatDialog } from '@angular/material';
+import { EditCourseComponent } from './edit-course/edit-course.component';
 
 @Component({
   selector: 'app-root',
@@ -11,24 +13,24 @@ import 'rxjs/add/observable/timer';
 export class AppComponent {
   // progress = 0;
   // timer;
-  isLoading = false;
+  // isLoading = false;
 
-  constructor() {
+  constructor(private dialog: MatDialog) {
     // this.timer = setInterval(() => {
     //   this.progress++;
 
     //   if (this.progress === 100) { clearInterval(this.timer); }
     // }, 20);
 
-    this.isLoading = true;
+    // this.isLoading = true;
 
-    this.getCourses()
-      .subscribe(x => this.isLoading = false);
+    // this.getCourses()
+    //   .subscribe(x => this.isLoading = false);
   }
 
-  getCourses() {
-    return Observable.timer(2000);
-  }
+  // getCourses() {
+  //   return Observable.timer(2000);
+  // }
 
   // title = 'app';
   // isChecked = true;
@@ -61,4 +63,10 @@ export class AppComponent {
 
   //   category.selected = !category.selected;
   // }
+
+  openDialog() {
+    this.dialog.open(EditCourseComponent)
+      .afterClosed()
+      .subscribe(result => console.log(result));
+  }
 }

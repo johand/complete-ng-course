@@ -4,17 +4,23 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import {
   MatCheckboxModule, MatRadioModule, MatSelectModule, MatInputModule,
   MatDatepickerModule, MatNativeDateModule, MatIconModule, MatButtonModule,
-  MatChipsModule, MatProgressSpinnerModule, MatTooltipModule, MatTabsModule
+  MatChipsModule, MatProgressSpinnerModule, MatTooltipModule, MatTabsModule,
+  MatDialogModule
 } from '@angular/material';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
+import { EditCourseComponent } from './edit-course/edit-course.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    EditCourseComponent
+  ],
+  entryComponents: [
+    EditCourseComponent
   ],
   imports: [
     BrowserModule,
@@ -31,6 +37,7 @@ import { FormsModule } from '@angular/forms';
     MatProgressSpinnerModule,
     MatTooltipModule,
     MatTabsModule,
+    MatDialogModule,
     FormsModule
   ],
   providers: [],
