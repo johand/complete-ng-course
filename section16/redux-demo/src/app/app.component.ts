@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NgRedux, select } from '@angular-redux/store';
 import { IAppState } from './store';
 import { INCREMENT } from './actions';
+import { Map } from 'immutable';
 
 @Component({
     selector: 'app-root',
@@ -10,12 +11,12 @@ import { INCREMENT } from './actions';
 })
 export class AppComponent {
     title = 'app works!';
-    @select('counter') count;
+    @select(s => s.get('counter')) count;
     @select(['messaging', 'newMessages']) newMessages;
     @select((s: IAppState) => s.messaging.newMessages) newMessagesCount;
 
 
-    constructor(private ngRedux: NgRedux<IAppState>) {
+    constructor(private ngRedux: NgRedux<Map<string, any>>) {
         // ngRedux.subscribe(() => {
         //     const store = ngRedux.getState();
         //     this.counter = store.counter;
