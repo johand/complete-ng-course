@@ -1,12 +1,12 @@
 
-export class VoteComponent { 
-  totalVotes = 0; 
+export class VoteComponent {
+    totalVotes = 0;
 
-  upVote() { 
-    this.totalVotes++;
-  }
+    upVote() {
+        this.totalVotes++;
+    }
 
-  downVote() { 
-    this.totalVotes--;
-  }
+    downVote() {
+        this.totalVotes--;
+    }
 }
