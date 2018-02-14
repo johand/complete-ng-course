@@ -11,7 +11,6 @@ import { DataTableResource } from 'angular5-data-table';
 })
 export class AdminProductsComponent implements OnInit, OnDestroy {
     products: Product[];
-    filteredProducts: Product[];
     subscription: Subscription;
     tableResource: DataTableResource<Product>;
     items: Product[] = [];
@@ -25,7 +24,7 @@ export class AdminProductsComponent implements OnInit, OnDestroy {
                 }));
             })
             .subscribe(products => {
-                this.filteredProducts = this.products = products;
+                this.products = products;
                 this.initializeTable(products);
             });
     }
@@ -46,9 +45,11 @@ export class AdminProductsComponent implements OnInit, OnDestroy {
     }
 
     filter(query: string) {
-        this.filteredProducts = (query) ?
+        let filteredProducts = (query) ?
             this.products.filter(p =>
                 p.value.title.toLowerCase().includes(query.toLowerCase())) : this.products;
+
+        this.initializeTable(filteredProducts);
     }
 
     reloadItems(params) {
