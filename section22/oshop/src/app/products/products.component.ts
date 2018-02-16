@@ -21,7 +21,7 @@ export class ProductsComponent implements OnInit {
         productService.getAll()
             .map(actions => {
                 return actions.map(action => ({
-                    key: action.key, value: action.payload.val()
+                    key: action.key, ...action.payload.val()
                 }));
             })
             .switchMap(products => {
@@ -32,7 +32,7 @@ export class ProductsComponent implements OnInit {
                 this.category = params.get('category');
 
                 this.filteredProducts = (this.category) ?
-                    this.products.filter(p => p.value.category === this.category) :
+                    this.products.filter(p => p.category === this.category) :
                     this.products;
             });
 

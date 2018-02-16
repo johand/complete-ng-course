@@ -20,7 +20,7 @@ export class AdminProductsComponent implements OnInit, OnDestroy {
         this.subscription = this.productService.getAll()
             .map(actions => {
                 return actions.map(action => ({
-                    key: action.key, value: action.payload.val()
+                    key: action.key, ...action.payload.val()
                 }));
             })
             .subscribe(products => {
@@ -47,7 +47,7 @@ export class AdminProductsComponent implements OnInit, OnDestroy {
     filter(query: string) {
         let filteredProducts = (query) ?
             this.products.filter(p =>
-                p.value.title.toLowerCase().includes(query.toLowerCase())) : this.products;
+                p.title.toLowerCase().includes(query.toLowerCase())) : this.products;
 
         this.initializeTable(filteredProducts);
     }

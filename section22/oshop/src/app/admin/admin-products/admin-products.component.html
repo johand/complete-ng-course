@@ -19,7 +19,7 @@
       [resizable]="true">
 
     <ng-template #dataTableCell let-item="item">
-      {{ item.value.title }}
+      {{ item.title }}
     </ng-template>
   </data-table-column>
 
@@ -30,7 +30,7 @@
       [resizable]="true">
 
     <ng-template #dataTableCell let-item="item">
-      {{ item.value.price | currency:'USD':symbol }}
+      {{ item.price | currency:'USD':symbol }}
     </ng-template>
   </data-table-column>
 
