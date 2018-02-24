@@ -18,7 +18,7 @@ export class ShoppingCartService {
         });
     }
 
-    private async getOtCreateCart() {
+    private async getOrCreateCart() {
         let cartId = localStorage.getItem('cartId');
 
         if (!cartId) {
