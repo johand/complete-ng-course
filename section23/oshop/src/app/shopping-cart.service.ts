@@ -66,14 +66,19 @@ export class ShoppingCartService {
 
         item$.snapshotChanges().take(1)
             .subscribe(item => {
-                item$.update({
-                    title: product.title,
-                    imageUrl: product.imageUrl,
-                    price: product.price,
-                    quantity: (item.payload.val() ? item.payload.val().quantity : 0) + change
+                let quantity = (item.payload.val() ? item.payload.val().quantity : 0) + change;
+                if (quantity === 0) {
+                    item$.remove();
 
-                });
+                } else {
+                    item$.update({
+                        title: product.title,
+                        imageUrl: product.imageUrl,
+                        price: product.price,
+                        quantity: quantity
 
+                    });
+                }
             });
     }
 }
