@@ -8,12 +8,14 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { CustomFormsModule } from 'ng2-validation';
+import { SharedModule } from 'shared/shared.module';
 
 import { environment } from '../environments/environment';
-import { AdminAuthGuardService } from './admin-auth-guard.service';
-import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.component';
-import { AdminProductsComponent } from './admin/admin-products/admin-products.component';
-import { ProductFormComponent } from './admin/product-form/product-form.component';
+import { AdminModule } from './admin/admin.module';
+import { AdminOrdersComponent } from './admin/components/admin-orders/admin-orders.component';
+import { AdminProductsComponent } from './admin/components/admin-products/admin-products.component';
+import { ProductFormComponent } from './admin/components/product-form/product-form.component';
+import { AdminAuthGuardService } from './admin/services/admin-auth-guard.service';
 import { AppComponent } from './app.component';
 import { BsNavbarComponent } from './bs-navbar/bs-navbar.component';
 import { CheckOutComponent } from './check-out/check-out.component';
@@ -27,7 +29,6 @@ import { AuthGuardService } from './shared/services/auth-guard.service';
 import { ShippingFormComponent } from './shipping-form/shipping-form.component';
 import { ShoppingCartSummaryComponent } from './shopping-cart-summary/shopping-cart-summary.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
-import { SharedModule } from 'shared/shared.module';
 
 
 @NgModule({
@@ -40,20 +41,18 @@ import { SharedModule } from 'shared/shared.module';
         CheckOutComponent,
         OrderSuccessComponent,
         MyOrdersComponent,
-        AdminProductsComponent,
-        AdminOrdersComponent,
         LoginComponent,
-        ProductFormComponent,
         ProductFilterComponent,
         ShoppingCartSummaryComponent,
         ShippingFormComponent
     ],
     imports: [
+        AdminModule,
         SharedModule,
         CustomFormsModule,
-        FormsModule,
         BrowserModule,
         DataTableModule,
+        FormsModule,
         AngularFireModule.initializeApp(environment.firebase),
         AngularFireDatabaseModule,
         AngularFireAuthModule,
@@ -108,7 +107,6 @@ import { SharedModule } from 'shared/shared.module';
         ])
     ],
     providers: [
-        AdminAuthGuardService,
     ],
     bootstrap: [AppComponent]
 })

@@ -12,7 +12,7 @@ import { UserService } from 'shared/services/user.service';
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
   ],
   declarations: [
     ProductCardComponent,
