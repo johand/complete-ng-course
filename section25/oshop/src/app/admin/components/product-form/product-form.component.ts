@@ -11,7 +11,12 @@ import 'rxjs/add/operator/take';
 })
 export class ProductFormComponent implements OnInit {
     categories$;
-    product = {};
+    product = {} as {
+        title: string,
+        category: string,
+        price: number,
+        imageUrl: string
+    };
     id;
 
     constructor(
